@@ -57,7 +57,7 @@ def password_crack(truePassword):
             else:
                 print("End")
                 exit()
-        for i in range(len(new_password_number_list)-1):
+        for i in reversed(range(len(new_password_number_list)-1)):
             if new_password_number_list[i] == 113:
                 if i != 0 and len(new_password_number_list) > 1:
                     new_password_number_list[i] = 0
@@ -67,13 +67,14 @@ def password_crack(truePassword):
                     continue_password_craking = False
 
         if continue_password_craking:
+            print(new_password_number_list)
             new_password_char_arr_try = translate_number_list_to_char_list(new_password_number_list)
             new_password_string_try = ''.join(new_password_char_arr_try)
             if new_password_string_try == truePassword:
                 print("Your password is " + new_password_string_try)
                 continue_password_craking = False
             else:
-                print(new_password_string_try)
+                #print(new_password_string_try)
                 new_password_number_list[len(new_password_number_list)-1] += 1
 
 
